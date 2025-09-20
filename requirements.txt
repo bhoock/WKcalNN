@@ -1,0 +1,13 @@
+voila
+ipywidgets
+numpy
+matplotlib
+os
+copy
+time
+IPython
+mpl_interactions.ipyplot
+warnings
+tensorflow
+tqdm.keras
+tensorflow.keras
