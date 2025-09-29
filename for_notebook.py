@@ -3,14 +3,14 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.offsetbox import AnchoredText
+import mpl_interactions.ipyplot as iplt
+plt.rcParams.update({'font.size': 14})
 from copy import deepcopy
 from for_models import *
 import time
 import ipywidgets as widgets
 from ipywidgets import HBox, VBox, Box, Layout, GridBox
-import numpy as np
 from IPython.display import display, Image
-import mpl_interactions.ipyplot as iplt
 import tkinter as tk
 from tkinter import font as tkfont
 import warnings
@@ -19,17 +19,16 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 devnull = os.open(os.devnull, os.O_WRONLY)
 os.dup2(devnull, 2)  # Redirect stderr (fd=2) to /dev/null
 import tensorflow
-import tensorflow.keras.config
-from tqdm.keras import TqdmCallback
-from tensorflow.keras import saving
-from tensorflow.keras.losses import MeanSquaredError, MeanAbsoluteError
-from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
+import tensorflow.keras.config
+from tensorflow.keras.layers import Input, Dense, Activation
+from tensorflow.keras.losses import MeanSquaredError, MeanAbsoluteError
 from tensorflow.keras.models import Sequential, Model
-from tensorflow.keras.layers import Input, Dense, Concatenate, Add, Multiply, Lambda, Flatten, Reshape, Cropping1D, Activation
+from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.initializers import Ones, Zeros
 from tensorflow.keras.utils import get_custom_objects
-plt.rcParams.update({'font.size': 14})
+from tqdm.keras import TqdmCallback
+from tensorflow.keras import saving
 
 
 def MAE(aa,bb):
