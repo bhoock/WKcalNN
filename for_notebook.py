@@ -546,7 +546,6 @@ def show_popup(message,title):
 get_custom_objects().update({'saw_act': Activation(saw_act)})
 np.random.seed(42)
 
-# path_data = '../../Data/Training_data/'
 path_data = os.getcwd()+'/Data/'
 ZM,ZS,TM,TS,RM,RS,CM,CS,pM,pS = list(np.load(path_data+'standardizers_DD.npy'))
 period = np.load(path_data+'period228.npy')
@@ -554,7 +553,7 @@ period_b = tensorflow.convert_to_tensor(period[:,None])
 period2 = np.linspace(-1.5,2.5,1000)
 period2_b = tensorflow.convert_to_tensor(period2[:,None])
 # pressures = np.load(path_data+'Training_Data_27_February_pressures_rolled.npy')
-pressures = np.r_[np.load(path_data+'Training_Data_27_February_pressures_rolled_1.npy'),np.load(path_data+'Training_Data_27_February_pressures_rolled.npy')]
+pressures = np.r_[np.load(path_data+'Training_Data_27_February_pressures_rolled_p1.npy'),np.load(path_data+'Training_Data_27_February_pressures_rolled_p2.npy')]
 
 set_r = np.round(np.load(path_data+'Training_Data_27_February_set_r.npy')*1e-8,4)
 set_c = np.round(np.load(path_data+'Training_Data_27_February_set_c.npy')*1e8,4)
