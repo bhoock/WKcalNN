@@ -252,8 +252,8 @@ def set_up(b):
     pressures_b = tensorflow.convert_to_tensor(pressures_target[:,None])
 
     minimum = np.array([set_r[ir_target], set_c[ic_target], set_z[iz_target]])
-    if opt_z == False: print("True parameters: \t R = {0:.4f} \t C = {1:.4f}".format(minimum[0],minimum[1],minimum[2]*100.))
-    if opt_z == True: print("True parameters: \t R = {0:.4f} \t C = {1:.4f} \t z = {2:2.2f}".format(minimum[0],minimum[1],minimum[2]*100.))
+    if opt_z == False: print("\n\nTrue parameters: \t R = {0:.4f} \t C = {1:.4f}".format(minimum[0],minimum[1],minimum[2]*100.))
+    if opt_z == True: print("\n\nTrue parameters: \t R = {0:.4f} \t C = {1:.4f} \t z = {2:2.2f}".format(minimum[0],minimum[1],minimum[2]*100.))
     globals().update(locals())
     return 0
 
@@ -372,13 +372,13 @@ def run_calibration(b):
         if verb != 0: print("\n\nCalibration finished.\n")
         if not opt_z:
           print("Result of calibration: \t\t R = %.4f \t C = %.4f" % (np.round(R_opt,4),np.round(C_opt,4)))
-          print("True parameters: \t\t R = %.4f \t C = %.4f" % (minimum[0],minimum[1]))
-          print("Percentage errors: \t\t R: %.4f %% \t C = %.4f %%" % (np.round(rels[0],4),np.round(rels[1],4)))
+          print("True parameters:       \t\t R = %.4f \t C = %.4f" % (minimum[0],minimum[1]))
+          print("Percentage errors:     \t\t R: %.4f %% \t C = %.4f %%" % (np.round(rels[0],4),np.round(rels[1],4)))
         else:
           print("Result of calibration: \t\t R = %.4f \t C = %.4f \t z = %2.2f cm" % (np.round(R_opt,4),np.round(C_opt,4),np.round(z_opt*100,2)))
-          print("True parameters: \t\t R = %.4f \t C = %.4f \t z = %2.2f cm" % (minimum[0],minimum[1],minimum[2]*100.))
-          print("Percentage errors: \t\t R: %.4f %% \t C = %.4f %%" % (np.round(rels[0],4),np.round(rels[1],4)))
-        print("Found phase shift: \t\t tau = %.4f s" %(tau_opt*TS))
+          print("True parameters:       \t\t R = %.4f \t C = %.4f \t z = %2.2f cm" % (minimum[0],minimum[1],minimum[2]*100.))
+          print("Percentage errors:     \t\t R: %.4f %% \t C = %.4f %%" % (np.round(rels[0],4),np.round(rels[1],4)))
+        print("Found phase shift:       \t\t tau = %.4f s" %(tau_opt*TS))
         print("============================================\n\n\n")
 
         # Formatting for popup message
@@ -545,6 +545,7 @@ def show_popup(message,title):
 get_custom_objects().update({'saw_act': Activation(saw_act)})
 np.random.seed(42)
 
+# path_data = '../../Data/Training_data/'
 path_data = os.getcwd()+'/Data/'
 ZM,ZS,TM,TS,RM,RS,CM,CS,pM,pS = list(np.load(path_data+'standardizers_DD.npy'))
 period = np.load(path_data+'period228.npy')
